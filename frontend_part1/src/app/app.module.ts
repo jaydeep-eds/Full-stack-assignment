@@ -6,18 +6,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home/component/home.component';
 import { TokenInterceptorService } from './service/token-interceptor.service';
-import { MatTableModule } from '@angular/material/table';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StoreModule } from '@ngrx/store';
-import { employeeReducer } from './home/state/home.reducers';
+import { employeeReducer } from './home/reducers/home.reducers';
 import { EffectsModule } from '@ngrx/effects';
-import { HomeEffects } from './home/state/home.effects';
+import { HomeEffects } from './home/effects/home.effects';
+import { EmployeeEffects } from './employee/effects';
+import { RouterModule } from '@angular/router';
+import { routes } from './employee/employee-routing.module';
+
 
 
 
@@ -26,23 +25,20 @@ import { HomeEffects } from './home/state/home.effects';
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent,
-    NavbarComponent,
+    // HomeComponent,
+    // NavbarComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forChild(routes),
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatMenuModule,
     FormsModule,
     StoreModule.forRoot({employee:employeeReducer}),
-    EffectsModule.forRoot([HomeEffects])
+    EffectsModule.forRoot([HomeEffects,EmployeeEffects])
     
 
   ],

@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store'
-import { employee } from './home.state';
+import { createAction, props } from '@ngrx/store';
+import { employee } from '../reducers/employee.reducers';
 
 export const LOAD_POSTS = '[post page] load posts';
 export const LOAD_POSTS_SUCCESS = '[post page] load posts success'

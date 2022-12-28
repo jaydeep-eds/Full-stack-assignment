@@ -11,10 +11,23 @@
 </head>
 
 <body>
-    <div>
-        <app-navbar></app-navbar>
-    </div>
-
+  
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" name="" id="">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Logout</a></li>
+        
+            </ul>
+            <h1 class="logo">Navbar</h1>
+        </div>
+    </nav>
     <br>
     <br>
     <br>
@@ -22,12 +35,12 @@
     <div class="container alert alert-light">
         <h2>EmployeeList Table</h2>
         <br>
+        
         <div>
             <input id="search" type="text" class="form-control" placeholder="Search for name and email......"
-                [(ngModel)]="value" (keyup)="onSearch()" />
-
+            (keyup)="onSearch($event)"/>
+            
         </div>
-
 
         <br>
 
@@ -44,7 +57,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let employee of employees$ | async">
+                        <tr *ngFor="let employee of Employee">
                             <td>{{employee.id}}</td>
                             <td>{{employee.employeeName}}</td>
                             <td>{{employee.address}}</td>
